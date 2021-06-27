@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:mc855/entities/subject.dart';
+import 'package:mc855/mocks/subjects.dart';
 import 'package:mc855/routes.dart';
 import 'package:mc855/widgets/bottom_bar.dart';
+import 'package:mc855/widgets/list_item.dart';
 
 class ConfigPage extends StatefulWidget {
   ConfigPage({Key? key, required this.title}) : super(key: key);
@@ -12,8 +15,8 @@ class ConfigPage extends StatefulWidget {
 }
 
 class _ConfigPageState extends State<ConfigPage> {
-  List<String> items = ["amendoim", "crocante"];
   int currentIndex = 1;
+  List<Subject> items = Mocks.getSubjects();
 
   @override
   Widget build(BuildContext context) {
@@ -25,14 +28,10 @@ class _ConfigPageState extends State<ConfigPage> {
         child: ListView.builder(
           itemCount: items.length,
           itemBuilder: (context, index) {
+            items.sort((a, b) => (a.code.compareTo(b.code)));
             final item = items[index];
 
-            return Card(
-              child: ListTile(
-                title: Text(item),
-                subtitle: Text(item),
-              ),
-            );
+            return ListItem(item, () => print("config"));
           },
         ),
       ),

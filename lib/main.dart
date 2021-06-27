@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
           )),
       onGenerateRoute: (settings) {
         if (routes.getDefault().containsKey(settings.name)) {
-          return routes.routeBuilder(settings.name!);
+          return routes.routeBuilder(settings.name!, settings.arguments ?? {});
         }
         return null; // not found page
       },

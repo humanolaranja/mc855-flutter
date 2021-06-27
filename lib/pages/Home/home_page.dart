@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:mc855/entities/subject.dart';
-import 'package:mc855/entities/time.dart';
 import 'package:mc855/mocks/subjects.dart';
 import 'package:mc855/routes.dart';
-import 'package:mc855/utils/days.dart';
 import 'package:mc855/widgets/bottom_bar.dart';
+import 'package:mc855/widgets/list_item.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key? key, required this.title}) : super(key: key);
@@ -32,52 +31,9 @@ class _HomePageState extends State<HomePage> {
             items.sort((a, b) => (a.code.compareTo(b.code)));
             final item = items[index];
 
-            return Padding(
-              padding: EdgeInsets.symmetric(horizontal: 8),
-              child: Card(
-                child: Padding(
-                  padding: EdgeInsets.all(16),
-                  child: ListTile(
-                    title: Text("${item.code} - ${item.name} (${item.credits})"),
-                    subtitle: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(item.institute),
-                        ListView.builder(
-                          shrinkWrap: true,
-                          itemCount: item.classes.length,
-                          itemBuilder: (context, classesIndex) {
-                            List<Time> lessons = item.classes[classesIndex].lessons;
-                            return Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Divider(),
-                                Text(
-                                  "Turma ${item.classes[classesIndex].classCode}",
-                                  style: TextStyle(fontWeight: FontWeight.bold),
-                                ),
-                                ListView.builder(
-                                  shrinkWrap: true,
-                                  itemCount: lessons.length,
-                                  itemBuilder: (context, index) {
-                                    return Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                            "${Days.getDayOfWeek(item.classes[classesIndex].lessons[index].dayOfWeek)}, ${item.classes[classesIndex].lessons[index].initialHour}:00 - ${item.classes[classesIndex].lessons[index].finalHour}:00"),
-                                      ],
-                                    );
-                                  },
-                                ),
-                              ],
-                            );
-                          },
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
+            return ListItem(
+              item,
+              () => Routes().navigateToDetailsPage(context, item),
             );
           },
         ),
