@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mc855/pages/Config/config_page.dart';
 import 'package:mc855/pages/Home/home_page.dart';
+import 'package:mc855/pages/Login/login_page.dart';
 
 class Routes {
   static final String loginPagePath = '/';
@@ -9,6 +10,7 @@ class Routes {
 
   getDefault() {
     return {
+      loginPagePath: (BuildContext context) => LoginPage(),
       homePagePath: (BuildContext context) => HomePage(title: "Minhas Disciplinas"),
       configPagePath: (BuildContext context) => ConfigPage(title: "Configurar Disciplinas"),
     };

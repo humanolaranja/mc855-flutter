@@ -1,0 +1,95 @@
+import 'package:flutter/material.dart';
+import 'package:mc855/routes.dart';
+
+class LoginPage extends StatefulWidget {
+  LoginPage({Key? key}) : super(key: key);
+
+  @override
+  _LoginPageState createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Container(
+        color: Color(0xFF00ADB5),
+        child: Padding(
+          padding: EdgeInsets.all(40),
+          child: Column(
+            children: [
+              Padding(
+                padding: EdgeInsets.only(bottom: 40),
+                child: Image(
+                  image: AssetImage('logo.png'),
+                  width: 120,
+                ),
+              ),
+              Flexible(
+                child: Container(
+                  child: Card(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50),
+                    ),
+                    child: Padding(
+                      padding: EdgeInsets.all(40),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          TextField(
+                            decoration: InputDecoration(
+                              border: UnderlineInputBorder(),
+                              focusedBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(color: Color(0xFF80DE5B)),
+                              ),
+                              labelText: 'Email',
+                              labelStyle: TextStyle(color: Color(0xFF80DE5B)),
+                            ),
+                          ),
+                          TextField(
+                            decoration: InputDecoration(
+                              border: UnderlineInputBorder(),
+                              focusedBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(color: Color(0xFF80DE5B)),
+                              ),
+                              labelText: 'Senha',
+                              labelStyle: TextStyle(color: Color(0xFF80DE5B)),
+                            ),
+                            obscureText: true,
+                          ),
+                          Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 80),
+                            child: Container(
+                              width: double.maxFinite,
+                              height: 40,
+                              child: ElevatedButton(
+                                onPressed: () => Routes().replaceToHomePage(context),
+                                child: Text("Login"),
+                              ),
+                            ),
+                          ),
+                          Text("Esqueceu a senha?"),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text("Não tem conta? "),
+                              Text(
+                                "Cadastre-se",
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              ),
+                            ],
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
