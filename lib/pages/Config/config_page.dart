@@ -43,7 +43,7 @@ class _ConfigPageState extends State<ConfigPage> {
             items.sort((a, b) => (a.code.compareTo(b.code)));
             final item = items[index];
 
-            return ListItem(item, () => print("config"));
+            return ListItem(item, () => Routes().navigateToConfigDetailsPage(context, item));
           },
         ),
       ),

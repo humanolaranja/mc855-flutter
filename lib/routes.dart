@@ -10,6 +10,7 @@ class Routes {
   static final String loginPagePath = '/';
   static final String homePagePath = '/home';
   static final String configPagePath = '/config';
+  static final String configDetailsPagePath = '/config/details';
   static final String detailsPagePath = '/details';
   static final String includeSubjectPagePath = '/include';
 
@@ -18,7 +19,8 @@ class Routes {
       loginPagePath: (BuildContext context) => LoginPage(),
       homePagePath: (BuildContext context) => HomePage(title: "Minhas Disciplinas"),
       configPagePath: (BuildContext context) => ConfigPage(title: "Configurar Disciplinas"),
-      detailsPagePath: (BuildContext context) => DetailsPage(),
+      detailsPagePath: (BuildContext context) => DetailsPage(false),
+      configDetailsPagePath: (BuildContext context) => DetailsPage(true),
       includeSubjectPagePath: (BuildContext context) => IncludeSubjectPage(),
     };
   }
@@ -36,6 +38,10 @@ class Routes {
 
   navigateToDetailsPage(BuildContext context, Subject subject) {
     Navigator.pushNamed(context, detailsPagePath, arguments: subject);
+  }
+
+  navigateToConfigDetailsPage(BuildContext context, Subject subject) {
+    Navigator.pushNamed(context, configDetailsPagePath, arguments: subject);
   }
 
   navigateToincludeSubjectPage(BuildContext context) {
