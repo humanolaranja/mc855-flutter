@@ -26,6 +26,7 @@ class MyApp extends StatelessWidget {
         }
         return null; // not found page
       },
+      debugShowCheckedModeBanner: false,
     );
   }
 }

@@ -44,7 +44,7 @@ class _ConfigPageState extends State<ConfigPage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: null,
-        tooltip: 'Increment',
+        tooltip: 'Adicionar nova matéria',
         child: Icon(Icons.add),
       ),
     );
