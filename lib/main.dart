@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     Routes routes = Routes();
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'PEPAD',
       theme: ThemeData(
           primaryColor: Color(0xFF00ADB5),
           buttonColor: Color(0xFF80DE5B),
