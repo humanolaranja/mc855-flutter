@@ -16,13 +16,25 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int currentIndex = 0;
-  List<Subject> items = Mocks.getSubjects();
+  List<Subject> items = Mocks.getMySubjects();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
+        actions: [
+          Padding(
+            padding: EdgeInsets.all(20),
+            child: MouseRegion(
+              cursor: SystemMouseCursors.click,
+              child: GestureDetector(
+                onTap: () => Routes().replaceToLoginPage(context),
+                child: Text("Sair"),
+              ),
+            ),
+          ),
+        ],
       ),
       body: Center(
         child: ListView.builder(
@@ -45,7 +57,7 @@ class _HomePageState extends State<HomePage> {
         onTap: (index) => currentIndex != index && currentIndex == 0 ? Routes().replaceToConfig(context) : Routes().replaceToHomePage(context),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => {},
+        onPressed: () => Routes().navigateToincludeSubjectPage(context),
         tooltip: 'Incluir matéria',
         child: Icon(Icons.add),
       ),

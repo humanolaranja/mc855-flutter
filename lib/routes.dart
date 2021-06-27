@@ -3,6 +3,7 @@ import 'package:mc855/entities/subject.dart';
 import 'package:mc855/pages/Config/config_page.dart';
 import 'package:mc855/pages/Details/details_page.dart';
 import 'package:mc855/pages/Home/home_page.dart';
+import 'package:mc855/pages/IncludeSubject/include_subject_page.dart';
 import 'package:mc855/pages/Login/login_page.dart';
 
 class Routes {
@@ -10,6 +11,7 @@ class Routes {
   static final String homePagePath = '/home';
   static final String configPagePath = '/config';
   static final String detailsPagePath = '/details';
+  static final String includeSubjectPagePath = '/include';
 
   getDefault() {
     return {
@@ -17,6 +19,7 @@ class Routes {
       homePagePath: (BuildContext context) => HomePage(title: "Minhas Disciplinas"),
       configPagePath: (BuildContext context) => ConfigPage(title: "Configurar Disciplinas"),
       detailsPagePath: (BuildContext context) => DetailsPage(),
+      includeSubjectPagePath: (BuildContext context) => IncludeSubjectPage(),
     };
   }
 
@@ -32,8 +35,15 @@ class Routes {
   }
 
   navigateToDetailsPage(BuildContext context, Subject subject) {
-    print(subject.code);
     Navigator.pushNamed(context, detailsPagePath, arguments: subject);
+  }
+
+  navigateToincludeSubjectPage(BuildContext context) {
+    Navigator.pushNamed(context, includeSubjectPagePath);
+  }
+
+  replaceToLoginPage(BuildContext context) {
+    Navigator.pushReplacementNamed(context, loginPagePath);
   }
 
   replaceToHomePage(BuildContext context) {

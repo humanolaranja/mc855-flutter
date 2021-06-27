@@ -23,6 +23,18 @@ class _ConfigPageState extends State<ConfigPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
+        actions: [
+          Padding(
+            padding: EdgeInsets.all(20),
+            child: MouseRegion(
+              cursor: SystemMouseCursors.click,
+              child: GestureDetector(
+                onTap: () => Routes().replaceToLoginPage(context),
+                child: Text("Sair"),
+              ),
+            ),
+          ),
+        ],
       ),
       body: Center(
         child: ListView.builder(

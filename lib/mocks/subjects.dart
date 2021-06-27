@@ -3,6 +3,61 @@ import 'package:mc855/entities/subject.dart';
 import 'package:mc855/entities/time.dart';
 
 class Mocks {
+  static List<Subject> getMySubjects() {
+    return [
+      Subject(
+        "MC855",
+        "Projeto em Sistema de Computação",
+        [
+          Class(
+            "A",
+            [
+              Time(5, 18, 19),
+            ],
+          )
+        ],
+        "Instituto de Computação",
+        12,
+      ),
+      Subject(
+        "MA311",
+        "Cálculo III",
+        [
+          Class(
+            "E",
+            [
+              Time(1, 18, 19),
+              Time(3, 18, 19),
+            ],
+          ),
+          Class(
+            "G",
+            [
+              Time(2, 18, 19),
+              Time(4, 18, 19),
+            ],
+          )
+        ],
+        "Instituto de Matemática, Estatística e Computação Científica",
+        06,
+      ),
+      Subject(
+        "MC504",
+        "Sistemas Operacionais",
+        [
+          Class(
+            "A",
+            [
+              Time(2, 17, 19),
+            ],
+          )
+        ],
+        "Instituto de Computação",
+        04,
+      ),
+    ];
+  }
+
   static List<Subject> getSubjects() {
     return [
       Subject(
@@ -219,7 +274,14 @@ class Mocks {
       Subject(
         "MC504",
         "Sistemas Operacionais",
-        [],
+        [
+          Class(
+            "A",
+            [
+              Time(2, 17, 19),
+            ],
+          )
+        ],
         "Instituto de Computação",
         04,
       ),
