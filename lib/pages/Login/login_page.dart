@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:mc855/routes.dart';
 
@@ -9,6 +10,10 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  String path(str) {
+    return (kIsWeb) ? str : 'assets/$str';
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,7 +26,7 @@ class _LoginPageState extends State<LoginPage> {
               Padding(
                 padding: EdgeInsets.only(bottom: 40),
                 child: Image(
-                  image: AssetImage('logo.png'),
+                  image: AssetImage(path('logo.png')),
                   width: 120,
                 ),
               ),
@@ -59,7 +64,7 @@ class _LoginPageState extends State<LoginPage> {
                             obscureText: true,
                           ),
                           Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 80),
+                            padding: EdgeInsets.symmetric(horizontal: 72),
                             child: Container(
                               width: double.maxFinite,
                               height: 40,

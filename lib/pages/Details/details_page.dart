@@ -85,14 +85,26 @@ class DetailsPage extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Row(
-                          children: [
-                            Text(
-                              "Instituto: ",
-                              style: TextStyle(fontWeight: FontWeight.bold),
+                        Container(
+                          child: Expanded(
+                            child: Row(
+                              children: [
+                                Text(
+                                  "Instituto: ",
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
+                                Expanded(
+                                  child: Container(
+                                    child: Text(
+                                      "${subject.institute}",
+                                      overflow: TextOverflow.ellipsis,
+                                      maxLines: 2,
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
-                            Text("${subject.institute}"),
-                          ],
+                          ),
                         ),
                         ConditionalWidget(
                           edit,
