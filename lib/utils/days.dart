@@ -1,4 +1,8 @@
 class Days {
+  static List<String> getDaysOfWeek() {
+    return ["Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"];
+  }
+
   static String getDayOfWeek(int day) {
     switch (day) {
       case 0:
