@@ -1,7 +1,5 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:mc855/entities/student%20.dart';
-import 'package:mc855/entities/teacher.dart';
 import 'package:mc855/routes.dart';
 
 enum character { student, teacher }
@@ -18,15 +16,13 @@ class _RegisterPageState extends State<RegisterPage> {
     return (kIsWeb) ? str : 'assets/$str';
   }
 
-  character? _character = character.student;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
         color: Color(0xFF00ADB5),
         child: Padding(
-          padding: EdgeInsets.all(10),
+          padding: EdgeInsets.all(40),
           child: Column(
             children: [
               Padding(
@@ -52,8 +48,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             decoration: InputDecoration(
                               border: UnderlineInputBorder(),
                               focusedBorder: UnderlineInputBorder(
-                                borderSide:
-                                    BorderSide(color: Color(0xFF80DE5B)),
+                                borderSide: BorderSide(color: Color(0xFF80DE5B)),
                               ),
                               labelText: 'Nome',
                               labelStyle: TextStyle(color: Color(0xDD000000)),
@@ -63,8 +58,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             decoration: InputDecoration(
                               border: UnderlineInputBorder(),
                               focusedBorder: UnderlineInputBorder(
-                                borderSide:
-                                    BorderSide(color: Color(0xFF80DE5B)),
+                                borderSide: BorderSide(color: Color(0xFF80DE5B)),
                               ),
                               labelText: 'Email',
                               labelStyle: TextStyle(color: Color(0xDD000000)),
@@ -74,8 +68,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             decoration: InputDecoration(
                               border: UnderlineInputBorder(),
                               focusedBorder: UnderlineInputBorder(
-                                borderSide:
-                                    BorderSide(color: Color(0xFF80DE5B)),
+                                borderSide: BorderSide(color: Color(0xFF80DE5B)),
                               ),
                               labelText: 'Senha',
                               labelStyle: TextStyle(color: Color(0xDD000000)),
@@ -86,8 +79,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             decoration: InputDecoration(
                               border: UnderlineInputBorder(),
                               focusedBorder: UnderlineInputBorder(
-                                borderSide:
-                                    BorderSide(color: Color(0xFF80DE5B)),
+                                borderSide: BorderSide(color: Color(0xFF80DE5B)),
                               ),
                               labelText: 'Repetir Senha',
                               labelStyle: TextStyle(color: Color(0xDD000000)),
@@ -98,33 +90,13 @@ class _RegisterPageState extends State<RegisterPage> {
                             padding: EdgeInsets.only(bottom: 20),
                             alignment: Alignment.topLeft,
                           ),
-                          Text(
-                            'Você é:',
-                            textAlign: TextAlign.left,
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                          ListTile(
-                            title: const Text('Estudante'),
-                            leading: Radio<character>(
-                              value: character.student,
-                              groupValue: _character,
-                              onChanged: (character? value) {
-                                setState(() {
-                                  _character = value;
-                                });
-                              },
-                            ),
-                          ),
-                          ListTile(
-                            title: const Text('PED/PAD'),
-                            leading: Radio<character>(
-                              value: character.teacher,
-                              groupValue: _character,
-                              onChanged: (character? value) {
-                                setState(() {
-                                  _character = value;
-                                });
-                              },
+                          Center(
+                            child: TextButton(
+                              onPressed: () => Routes().replaceToLoginPage(context),
+                              child: Text(
+                                "Voltar",
+                                style: TextStyle(color: Color(0xFF80DE5B)),
+                              ),
                             ),
                           ),
                           Padding(
@@ -133,8 +105,7 @@ class _RegisterPageState extends State<RegisterPage> {
                               width: double.maxFinite,
                               height: 40,
                               child: ElevatedButton(
-                                onPressed: () =>
-                                    Routes().replaceToHomePage(context),
+                                onPressed: () => Routes().replaceToLoginPage(context),
                                 child: Text("Cadastrar"),
                               ),
                             ),

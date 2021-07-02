@@ -3,6 +3,36 @@ import 'package:mc855/entities/subject.dart';
 import 'package:mc855/entities/time.dart';
 
 class Mocks {
+  static List<String> getInstitutes() {
+    return [
+      "",
+      "Instituto de Artes",
+      "Instituto de Biologia",
+      "Instituto de Computação",
+      "Instituto de Economia",
+      "Instituto de Estudos da Linguagem",
+      "Instituto de Filosofia e Ciências Humanas",
+      "Instituto de Física",
+      "Instituto de Geociências",
+      "Instituto de Matemática, Estatística e Computação Científica",
+      "Instituto de Química",
+      "Faculdade de Ciências Aplicadas",
+      "Faculdade de Ciências Farmacêuticas",
+      "Faculdade de Enfermagem",
+      "Faculdade de Eng. de Alimentos",
+      "Faculdade de Eng. Agrícola",
+      "Faculdade de Eng. Civil, Arquitetura e Urbanismo",
+      "Faculdade de Eng. Elétrica e de Computação",
+      "Faculdade de Eng. Mecânica",
+      "Faculdade de Eng. Química",
+      "Faculdade de Ciências Médicas",
+      "Faculdade de Educação Física",
+      "Faculdade de Odontologia de Piracicaba",
+      "Faculdade de Educação",
+      "Faculdade de Tecnologia",
+    ];
+  }
+
   static List<Subject> getMySubjects() {
     return [
       Subject(
@@ -302,7 +332,14 @@ class Mocks {
       Subject(
         "MC526",
         "Bancos de Dados",
-        [],
+        [
+          Class(
+            "A",
+            [
+              Time(6, 16, 17),
+            ],
+          ),
+        ],
         "Instituto de Computação",
         04,
       ),

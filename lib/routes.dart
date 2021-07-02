@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mc855/entities/subject.dart';
 import 'package:mc855/pages/Config/config_page.dart';
 import 'package:mc855/pages/Details/details_page.dart';
 import 'package:mc855/pages/Home/home_page.dart';
@@ -19,10 +18,8 @@ class Routes {
   getDefault() {
     return {
       loginPagePath: (BuildContext context) => LoginPage(),
-      homePagePath: (BuildContext context) =>
-          HomePage(title: "Minhas Disciplinas"),
-      configPagePath: (BuildContext context) =>
-          ConfigPage(title: "Configurar Disciplinas"),
+      homePagePath: (BuildContext context) => HomePage(title: "Minhas Disciplinas"),
+      configPagePath: (BuildContext context) => ConfigPage(title: "Configurar Disciplinas"),
       detailsPagePath: (BuildContext context) => DetailsPage(false),
       configDetailsPagePath: (BuildContext context) => DetailsPage(true),
       includeSubjectPagePath: (BuildContext context) => IncludeSubjectPage(),
@@ -33,8 +30,7 @@ class Routes {
   routeBuilder(String name, Object arguments) {
     return PageRouteBuilder(
       settings: RouteSettings(name: name, arguments: arguments),
-      pageBuilder: (BuildContext context, __, ___) =>
-          Routes().getDefault()[name](context),
+      pageBuilder: (BuildContext context, __, ___) => Routes().getDefault()[name](context),
     );
   }
 
@@ -42,16 +38,16 @@ class Routes {
     Navigator.pushNamed(context, homePagePath);
   }
 
-  navigateToDetailsPage(BuildContext context, Subject subject) {
-    Navigator.pushNamed(context, detailsPagePath, arguments: subject);
+  navigateToDetailsPage(BuildContext context, PageArguments arguments) {
+    Navigator.pushNamed(context, detailsPagePath, arguments: arguments);
   }
 
-  navigateToConfigDetailsPage(BuildContext context, Subject subject) {
-    Navigator.pushNamed(context, configDetailsPagePath, arguments: subject);
+  navigateToConfigDetailsPage(BuildContext context, PageArguments arguments) {
+    Navigator.pushNamed(context, configDetailsPagePath, arguments: arguments);
   }
 
-  navigateToincludeSubjectPage(BuildContext context) {
-    Navigator.pushNamed(context, includeSubjectPagePath);
+  navigateToincludeSubjectPage(BuildContext context, Function addNewSubject) {
+    Navigator.pushNamed(context, includeSubjectPagePath, arguments: addNewSubject);
   }
 
   replaceToLoginPage(BuildContext context) {

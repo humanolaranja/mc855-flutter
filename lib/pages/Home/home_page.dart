@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mc855/entities/subject.dart';
 import 'package:mc855/mocks/subjects.dart';
+import 'package:mc855/pages/Details/details_page.dart';
 import 'package:mc855/routes.dart';
 import 'package:mc855/widgets/bottom_bar.dart';
 import 'package:mc855/widgets/list_item.dart';
@@ -17,6 +18,24 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int currentIndex = 0;
   List<Subject> items = Mocks.getMySubjects();
+
+  addNewSubject(Subject subject) {
+    setState(() {
+      List<Subject> newItems = items;
+      newItems.add(subject);
+      newItems.sort((a, b) => (a.code.compareTo(b.code)));
+      items = newItems;
+    });
+  }
+
+  removeSubject(Subject subject) {
+    setState(() {
+      List<Subject> newItems = items;
+      newItems.remove(subject);
+      newItems.sort((a, b) => (a.code.compareTo(b.code)));
+      items = newItems;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +64,7 @@ class _HomePageState extends State<HomePage> {
 
             return ListItem(
               item,
-              () => Routes().navigateToDetailsPage(context, item),
+              () => Routes().navigateToDetailsPage(context, PageArguments(item, removeSubject)),
             );
           },
         ),
@@ -57,7 +76,7 @@ class _HomePageState extends State<HomePage> {
         onTap: (index) => currentIndex != index && currentIndex == 0 ? Routes().replaceToConfig(context) : Routes().replaceToHomePage(context),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => Routes().navigateToincludeSubjectPage(context),
+        onPressed: () => Routes().navigateToincludeSubjectPage(context, addNewSubject),
         tooltip: 'Incluir matéria',
         child: Icon(Icons.add),
       ),

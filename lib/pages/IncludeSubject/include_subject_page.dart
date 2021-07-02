@@ -26,6 +26,8 @@ class _IncludeSubjectPageState extends State<IncludeSubjectPage> {
 
   @override
   Widget build(BuildContext context) {
+    final Function addSubject = ModalRoute.of(context)!.settings.arguments as Function;
+
     return Scaffold(
       appBar: AppBar(
         title: Text("Incluir Matérias"),
@@ -54,13 +56,22 @@ class _IncludeSubjectPageState extends State<IncludeSubjectPage> {
                 itemsToShow.sort((a, b) => (a.code.compareTo(b.code)));
                 final item = itemsToShow[index];
 
-                return Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 8),
-                  child: Card(
+                return MouseRegion(
+                  cursor: SystemMouseCursors.click,
+                  child: GestureDetector(
+                    onTap: () => {
+                      addSubject(item),
+                      Navigator.pop(context),
+                    },
                     child: Padding(
-                      padding: EdgeInsets.all(16),
-                      child: Row(
-                        children: [Text(item.code), Text(" - "), Text(item.name), Text(" (${item.credits})")],
+                      padding: EdgeInsets.symmetric(horizontal: 8),
+                      child: Card(
+                        child: Padding(
+                          padding: EdgeInsets.all(16),
+                          child: Row(
+                            children: [Text(item.code), Text(" - "), Text(item.name), Text(" (${item.credits})")],
+                          ),
+                        ),
                       ),
                     ),
                   ),

@@ -4,6 +4,13 @@ import 'package:mc855/entities/time.dart';
 import 'package:mc855/utils/days.dart';
 import 'package:mc855/widgets/conditional_widget.dart';
 
+class PageArguments {
+  final Subject subject;
+  final Function remove;
+
+  PageArguments(this.subject, this.remove);
+}
+
 class DetailsPage extends StatelessWidget {
   final bool edit;
 
@@ -11,7 +18,9 @@ class DetailsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Subject subject = ModalRoute.of(context)!.settings.arguments as Subject;
+    final arguments = ModalRoute.of(context)!.settings.arguments as PageArguments;
+    final Subject subject = arguments.subject;
+    final Function removeSubject = arguments.remove;
 
     return Scaffold(
       appBar: AppBar(
@@ -19,8 +28,12 @@ class DetailsPage extends StatelessWidget {
         actions: [
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 16),
-            child: GestureDetector(
-              child: Icon(Icons.delete),
+            child: MouseRegion(
+              cursor: SystemMouseCursors.click,
+              child: GestureDetector(
+                onTap: () => {removeSubject(subject), Navigator.pop(context)},
+                child: Icon(Icons.delete),
+              ),
             ),
           ),
         ],
