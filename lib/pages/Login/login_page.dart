@@ -46,20 +46,22 @@ class _LoginPageState extends State<LoginPage> {
                             decoration: InputDecoration(
                               border: UnderlineInputBorder(),
                               focusedBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(color: Color(0xFF80DE5B)),
+                                borderSide:
+                                    BorderSide(color: Color(0xFF80DE5B)),
                               ),
                               labelText: 'Email',
-                              labelStyle: TextStyle(color: Color(0xFF80DE5B)),
+                              labelStyle: TextStyle(color: Color(0xDD000000)),
                             ),
                           ),
                           TextField(
                             decoration: InputDecoration(
                               border: UnderlineInputBorder(),
                               focusedBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(color: Color(0xFF80DE5B)),
+                                borderSide:
+                                    BorderSide(color: Color(0xFF80DE5B)),
                               ),
                               labelText: 'Senha',
-                              labelStyle: TextStyle(color: Color(0xFF80DE5B)),
+                              labelStyle: TextStyle(color: Color(0xDD000000)),
                             ),
                             obscureText: true,
                           ),
@@ -69,7 +71,8 @@ class _LoginPageState extends State<LoginPage> {
                               width: double.maxFinite,
                               height: 40,
                               child: ElevatedButton(
-                                onPressed: () => Routes().replaceToHomePage(context),
+                                onPressed: () =>
+                                    Routes().replaceToHomePage(context),
                                 child: Text("Login"),
                               ),
                             ),
@@ -79,10 +82,15 @@ class _LoginPageState extends State<LoginPage> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text("Não tem conta? "),
-                              Text(
-                                "Cadastre-se",
-                                style: TextStyle(fontWeight: FontWeight.bold),
-                              ),
+                              TextButton(
+                                  onPressed: () =>
+                                      Routes().replaceToRegister(context),
+                                  child: Text(
+                                    "Cadastrar-se",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: Color(0xDD000000)),
+                                  ))
                             ],
                           )
                         ],

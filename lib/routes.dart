@@ -5,6 +5,7 @@ import 'package:mc855/pages/Details/details_page.dart';
 import 'package:mc855/pages/Home/home_page.dart';
 import 'package:mc855/pages/IncludeSubject/include_subject_page.dart';
 import 'package:mc855/pages/Login/login_page.dart';
+import 'package:mc855/pages/Register/register_page.dart';
 
 class Routes {
   static final String loginPagePath = '/';
@@ -13,22 +14,27 @@ class Routes {
   static final String configDetailsPagePath = '/config/details';
   static final String detailsPagePath = '/details';
   static final String includeSubjectPagePath = '/include';
+  static final String registerPagePath = '/register';
 
   getDefault() {
     return {
       loginPagePath: (BuildContext context) => LoginPage(),
-      homePagePath: (BuildContext context) => HomePage(title: "Minhas Disciplinas"),
-      configPagePath: (BuildContext context) => ConfigPage(title: "Configurar Disciplinas"),
+      homePagePath: (BuildContext context) =>
+          HomePage(title: "Minhas Disciplinas"),
+      configPagePath: (BuildContext context) =>
+          ConfigPage(title: "Configurar Disciplinas"),
       detailsPagePath: (BuildContext context) => DetailsPage(false),
       configDetailsPagePath: (BuildContext context) => DetailsPage(true),
       includeSubjectPagePath: (BuildContext context) => IncludeSubjectPage(),
+      registerPagePath: (BuildContext context) => RegisterPage(),
     };
   }
 
   routeBuilder(String name, Object arguments) {
     return PageRouteBuilder(
       settings: RouteSettings(name: name, arguments: arguments),
-      pageBuilder: (BuildContext context, __, ___) => Routes().getDefault()[name](context),
+      pageBuilder: (BuildContext context, __, ___) =>
+          Routes().getDefault()[name](context),
     );
   }
 
@@ -58,5 +64,9 @@ class Routes {
 
   replaceToConfig(BuildContext context) {
     Navigator.pushReplacementNamed(context, configPagePath);
+  }
+
+  replaceToRegister(BuildContext context) {
+    Navigator.pushReplacementNamed(context, registerPagePath);
   }
 }
